@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Web Technology (CS35302) – Study Guide</title>
+<style>
+:root{--bg:#f7f7f4;--sf:#fff;--tx:#1d1d1b;--mu:#66665f;--ac:#2f5bd8;--bd:#e2e2dc;--soft:#eaf0ff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#16171a;--sf:#1f2024;--tx:#ececea;--mu:#9a9a94;--ac:#7c9cff;--bd:#33343a;--soft:#262c44;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#16171a;--sf:#1f2024;--tx:#ececea;--mu:#9a9a94;--ac:#7c9cff;--bd:#33343a;--soft:#262c44;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{display:flex;align-items:center;gap:12px;padding:12px 18px;background:var(--sf);border-bottom:1px solid var(--bd);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+header h1{font-size:17px;margin:0;flex:1;cursor:pointer}
+button{font:inherit;color:inherit;background:none;border:1px solid var(--bd);border-radius:8px;padding:6px 11px;cursor:pointer}
+.wrap{display:flex;max-width:1100px;margin:auto}
+nav{width:290px;flex-shrink:0;padding:14px;border-right:1px solid var(--bd);height:calc(100vh - 60px);overflow:auto;position:sticky;top:60px}
+nav .u{width:100%;text-align:left;border:0;padding:8px 6px;font-weight:600;display:flex;justify-content:space-between}
+nav .t{display:block;width:100%;text-align:left;border:0;padding:5px 6px 5px 16px;color:var(--mu);font-size:14px;border-radius:6px}
+nav .t.on{background:var(--soft);color:var(--ac);font-weight:600}
+main{flex:1;padding:24px 22px 60px;min-width:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:16px}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:16px;text-align:left;display:block}
+.card:hover{border-color:var(--ac)}.card b{display:block;color:var(--ac)}.card small{color:var(--mu)}
+.box{background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:20px}
+h2{margin:.2em 0}.crumb{color:var(--mu);font-size:13px}
+li{margin:6px 0}.pn{display:flex;justify-content:space-between;margin-top:20px}
+#menu{display:none}
+@media(max-width:760px){#menu{display:block}nav{display:none;position:fixed;inset:60px 0 0 0;width:auto;height:auto;background:var(--bg);z-index:4}nav.open{display:block}}
+[hidden]{display:none!important}
+.gate{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(135deg,#2f5bd8,#7b3fe4 55%,#e4408e);overflow:auto}
+.gc{background:var(--sf);border-radius:22px;padding:32px 26px;max-width:420px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.35);text-align:center;animation:pop .5s ease}
+@keyframes pop{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
+.gc .big{font-size:58px;animation:fl 2.5s ease-in-out infinite}@keyframes fl{50%{transform:translateY(-8px)}}
+.gc h2{font-size:26px;margin:8px 0}.gc p{color:var(--mu);margin:6px 0 16px}
+.gc input{width:100%;padding:12px 14px;margin:6px 0;border:1px solid var(--bd);border-radius:12px;background:var(--bg);color:var(--tx);font:inherit}
+.gc input:focus{outline:2px solid var(--ac)}
+.gc .go{width:100%;margin-top:12px;background:linear-gradient(90deg,#2f5bd8,#7b3fe4);color:#fff;border:0;padding:13px;font-weight:600;border-radius:12px}
+.err{color:#d33;font-size:13px;min-height:18px;margin:4px 0 0}
+.hero{background:linear-gradient(135deg,#2f5bd8,#7b3fe4 60%,#e4408e);color:#fff;border-radius:18px;padding:28px 24px}
+.hero h2{font-size:26px}.hero p{margin:6px 0 0;opacity:.92}
+.card{border-top:4px solid var(--c,var(--ac));transition:transform .15s}.card:hover{transform:translateY(-3px)}
+.emo{font-size:28px;display:block}
+header{background:linear-gradient(90deg,var(--sf),var(--soft))}
+#who{font-size:14px;color:var(--mu)}
+</style></head><body>
+<div class="gate" id="gate"><div class="gc">
+<div id="w1"><div class="big">🎓</div><h2>Welcome to Web Technology</h2><p>CS35302 · Units 1 to 5 · 55+ topics of easy study notes, from Internet basics to Web 4.0.</p><button class="go" onclick="st()">Get Started →</button></div>
+<div id="w2" hidden><div class="big">✍️</div><h2>Tell us about you</h2><p>Enter your details to start learning.</p>
+<input id="fn" placeholder="Your name" autocomplete="name"><input id="fe" type="email" placeholder="Email ID" autocomplete="email"><input id="fc" placeholder="College name">
+<div class="err" id="err"></div><button class="go" onclick="enter()">Start Learning 🚀</button></div>
+</div></div>
+<header><button id="menu" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
+<h1 onclick="go(-1,-1)">📘 Web Technology · CS35302</h1>
+<span id="who"></span><button onclick="tg()">🌓</button><button onclick="out()" title="Log out">⎋</button></header>
+<div class="wrap"><nav id="nav"></nav><main id="main"></main></div>
+<script>
+const U=[
+{n:"Unit 1",t:"Internet & Web Basics",h:7,c:[
+["History of the Internet","The Internet began as ARPANET (1969), a US research network using packet switching. TCP/IP was adopted in 1983, and it grew into a global network of networks.",["1969: ARPANET","1983: TCP/IP standard","1990s: commercial Internet and ISPs"]],
+["World Wide Web & HTML","The WWW is a system of linked documents accessed over the Internet, invented by Tim Berners-Lee (1989–91). HTML (HyperText Markup Language) describes the structure of pages using tags.",["Web = service on the Internet, not the Internet itself","Key ideas: URL, HTTP, HTML","Basic page: html, head, body"]],
+["HTTP","HyperText Transfer Protocol is a stateless request–response protocol between browser (client) and server, on port 80 (HTTPS: 443).",["Methods: GET, POST, PUT, DELETE","Status codes: 200 OK, 404 Not Found, 500 Server Error","Stateless: cookies/sessions keep state"]],
+["SMTP","Simple Mail Transfer Protocol sends and relays email between mail servers. It is a push protocol using port 25 (587 for submission).",["Used by mail clients to send mail","Commands: HELO, MAIL FROM, RCPT TO, DATA, QUIT","Only sending, not retrieving"]],
+["POP3","Post Office Protocol v3 retrieves email from a server. Mail is usually downloaded to the device and deleted from the server.",["Port 110 (995 with SSL)","Works well offline","Poor for multiple devices"]],
+["MIME","Multipurpose Internet Mail Extensions lets email carry non-ASCII text and attachments such as images, audio and video.",["Headers: MIME-Version, Content-Type, Content-Transfer-Encoding","Examples: text/html, image/png","Also used by HTTP to describe content"]],
+["IMAP","Internet Message Access Protocol keeps mail on the server and lets many devices see the same mailbox in sync.",["Port 143 (993 with SSL)","Server-side folders and flags","Better than POP3 for multi-device use"]],
+["Domain Name Server (DNS)","DNS translates human-readable domain names (example.com) to IP addresses, working like the Internet’s phone book.",["Hierarchy: root → TLD → authoritative server","Record types: A, AAAA, MX, CNAME, NS","Resolvers cache answers (TTL)"]],
+["Web Browsers","A browser requests, receives and renders web content. It has a rendering engine, JavaScript engine and networking layer.",["Examples: Chrome (Blink), Firefox (Gecko), Safari (WebKit)","Parses HTML → DOM, CSS → CSSOM, then paints","Stores cookies, cache, history"]],
+["Web Servers","A web server software stores and serves web content over HTTP. It handles static files and passes dynamic requests to application code.",["Examples: Apache, Nginx, IIS","Features: virtual hosts, logging, SSL, caching","Dynamic content via PHP, Node.js, etc."]]]},
+{n:"Unit 2",t:"HTML, CSS, JavaScript & XML",h:8,c:[
+["Lists","HTML has ordered lists (ol), unordered lists (ul) and definition lists (dl). Items use li; dl uses dt and dd.",["ol type: 1, a, A, i, I","Lists can be nested","CSS list-style changes the markers"]],
+["Tables","Tables show data in rows and columns using table, tr, th and td.",["colspan and rowspan merge cells","thead, tbody, tfoot group rows","caption gives a title"]],
+["Images","The img tag embeds images. It is an empty element needing src and alt.",["Attributes: src, alt, width, height","Formats: JPG, PNG, GIF, SVG, WebP","Image maps with map and area"]],
+["Forms","Forms collect user input and send it to a server using form with action and method (GET/POST).",["Controls: input, select, textarea, button","Input types: text, password, email, radio, checkbox, file","label improves accessibility; validation via required, pattern"]],
+["Frames","Frames split a window into several sub-documents. frameset/frame are obsolete in HTML5; iframe embeds another page.",["Old: frameset, frame, noframes","Now: iframe","Problems: bookmarking, SEO, accessibility"]],
+["Dynamic HTML with JavaScript","DHTML = HTML + CSS + JavaScript, so pages change without reloading. JavaScript manipulates the DOM and reacts to events.",["Select: document.getElementById()","Change: element.innerHTML, element.style","Events: onclick, onsubmit, onload"]],
+["CSS","Cascading Style Sheets control presentation. Rule = selector { property: value; }.",["Inline, internal, external styles","Selectors: element, .class, #id","Box model: content, padding, border, margin; Flexbox/Grid for layout"]],
+["Document Type Definition (DTD)","A DTD defines the legal structure of an XML document: allowed elements, attributes and their order.",["ELEMENT and ATTLIST declarations","Internal or external DTD","Valid XML = well-formed + follows DTD"]],
+["XML Schemas","XML Schema (XSD) is a richer, XML-based alternative to DTD that supports data types and namespaces.",["Types: string, integer, date","Written in XML itself","Better validation than DTD"]],
+["Object Models","The DOM represents a document as a tree of objects that programs can read and change.",["Nodes: element, attribute, text","document is the root object","Used for both HTML and XML"]],
+["Presenting XML","XML only holds data. To display it, use CSS or XSLT to transform it into HTML.",["CSS: simple styling","XSLT: transforms XML → HTML","XPath selects nodes"]],
+["XML Processors: DOM and SAX","DOM loads the whole XML into memory as a tree. SAX is event-based and streams through the file.",["DOM: random access, high memory","SAX: forward only, fast, low memory","Use SAX for large files, DOM for editing"]]]},
+{n:"Unit 3",t:"Web Services & AJAX",h:7,c:[
+["Introduction to Web Services","A web service lets applications talk over a network using standard protocols, independent of language and platform.",["Uses XML/JSON over HTTP","Loose coupling, interoperable","Types: SOAP-based and REST"]],
+["UDDI","Universal Description, Discovery and Integration is a registry where providers publish and clients find web services.",["Works like yellow pages","Stores business and service info","Points to WSDL files"]],
+["SOAP","Simple Object Access Protocol is an XML messaging protocol for web services.",["Parts: Envelope, Header, Body, Fault","Usually over HTTP or SMTP","Strict, supports WS-Security"]],
+["WSDL","Web Services Description Language is an XML file describing what a service offers and how to call it.",["Elements: types, message, portType, binding, service","Machine-readable contract","Clients generate code from it"]],
+["Architecture of Web Services","Three roles interact: service provider, service requester and service registry.",["Publish → Find → Bind","Uses UDDI, WSDL, SOAP","Stack: transport, messaging, description, discovery"]],
+["Developing & Deploying Web Services","Steps: write the service class, expose it, generate WSDL, deploy to a server, then publish and test it.",["Tools: Apache Axis, JAX-WS, Tomcat","Test with SoapUI or a client stub","Deploy as WAR/service on app server"]],
+["AJAX: Improving Performance","Asynchronous JavaScript and XML updates parts of a page without a full reload, saving bandwidth and feeling faster.",["Only needed data is transferred","Page stays responsive","Examples: live search, auto-suggest"]],
+["Programming in AJAX","AJAX uses XMLHttpRequest (or fetch) to send requests in the background and handle the response in a callback.",["Create request → open() → send()","onreadystatechange; readyState 4 and status 200","Data formats: JSON, XML, text"]],
+["CORBA","Common Object Request Broker Architecture lets objects written in different languages on different machines communicate.",["Uses IDL to define interfaces","ORB handles requests","Protocol: IIOP; largely replaced by web services"]]]},
+{n:"Unit 4",t:"Web 2.0, Web 3.0 & Modern Trends",h:7,c:[
+["Web 2.0: Interactive & Social Web","Web 2.0 shifted the web from read-only to read–write, with user-generated content and collaboration.",["Participation and sharing","Rich user experiences","Examples: YouTube, Facebook, Wikipedia"]],
+["Blogs","Blogs are regularly updated web journals with posts in reverse chronological order.",["Platforms: WordPress, Blogger","Comments, tags, RSS feeds","Used for personal and business publishing"]],
+["Wikis","A wiki is a site that anyone can edit collaboratively, with page history.",["Example: Wikipedia","Version history and rollback","Collective knowledge building"]],
+["Social Networking Sites","Platforms where users build profiles, connect and share content.",["Examples: Facebook, LinkedIn, X, Instagram","Features: friends/follow, feeds, groups","Concerns: privacy, misinformation"]],
+["AJAX, RSS & Ruby on Rails","AJAX gives interactivity, RSS syndicates updates, Ruby on Rails is a rapid web framework.",["RSS: XML feed read by aggregators","Rails: MVC, convention over configuration, DRY","Rails has built-in ORM (ActiveRecord)"]],
+["Open APIs","Open APIs expose a service’s data and functions so developers can build on them.",["Usually REST + JSON","Examples: Google Maps, Twitter, OpenWeather","Use API keys / OAuth"]],
+["Web 3.0: Semantic Web","The Semantic Web adds machine-understandable meaning to data so software can reason about it.",["Proposed by Tim Berners-Lee","Tech: RDF, OWL, SPARQL","Ontologies describe concepts"]],
+["RDF","Resource Description Framework describes data as subject–predicate–object triples.",["Resources identified by URIs","Serialised as RDF/XML, Turtle, JSON-LD","Query with SPARQL"]],
+["Widgets & Mashups","Widgets are small embeddable web apps. Mashups combine data from multiple sources into a new service.",["Widget: weather box, chat box","Mashup: map + real-estate listings","Built using Open APIs"]],
+["Web-Based Information Systems","Information systems delivered through the web for collecting, storing and processing information.",["Examples: e-commerce, online banking, ERP","Layers: client, web server, database","Benefit: anywhere access"]],
+["Search Engines","Search engines crawl, index and rank pages to answer queries.",["Steps: crawling → indexing → ranking","Ranking: PageRank, relevance, SEO","Examples: Google, Bing"]],
+["Recommender Systems","Software that suggests items to users based on behaviour or similarity.",["Collaborative filtering","Content-based filtering","Used by Netflix, Amazon"]],
+["Benefits of Blockchain","A blockchain is a shared, tamper-resistant ledger of linked blocks.",["Decentralised and transparent","Immutable records","Smart contracts; secure transactions"]],
+["Edge Computing","Processing data near where it is generated rather than in a distant central cloud.",["Lower latency","Saves bandwidth","Useful for IoT, streaming, CDNs"]],
+["Dark Mode in Web Development","A dark colour scheme reduces glare and can save battery on OLED screens.",["CSS: @media (prefers-color-scheme: dark)","Use CSS variables for colours","Keep contrast accessible"]]]},
+{n:"Unit 5",t:"Web 4.0 & Future Web",h:7,c:[
+["Web 4.0: AI-Powered Web & Personalised Content","Web 4.0 is the intelligent web where AI understands users and adapts content to them.",["Chatbots and assistants","Personalised feeds and ads","Predictive behaviour analysis"]],
+["Decentralized Web (DWeb)","DWeb spreads data across peer-to-peer nodes instead of central servers, giving users control of data.",["Examples: IPFS, Mastodon","Resists censorship and single points of failure","Challenges: speed, moderation"]],
+["Blockchain Integration","Blockchain can add trust, identity and payments to web apps.",["dApps use smart contracts","Wallets (e.g. MetaMask) login","Web3.js / ethers.js connect sites to chains"]],
+["Internet of Things (IoT) in Web Development","IoT devices connect to the Internet; web apps monitor and control them through dashboards and APIs.",["Protocols: MQTT, HTTP, WebSockets","Examples: smart home, wearables","Concerns: security, privacy"]],
+["Augmented & Virtual Reality (AR/VR) in Web","WebXR lets browsers deliver immersive AR and VR experiences without apps.",["AR overlays digital items on the real world","VR gives a fully virtual environment","Tools: WebXR, A-Frame, Three.js"]],
+["Smart Web","A web where content and services use semantics, context and AI to act intelligently.",["Context-aware services","Voice search","Automated decision making"]],
+["Adaptive Interfaces","Interfaces that change layout or behaviour based on user, device or context.",["Responsive design","Adjusts to device, preferences, accessibility needs","AI-driven UI personalisation"]],
+["Web Automation","Using scripts and tools to perform web tasks automatically.",["Testing: Selenium, Playwright","Scraping and bots","CI/CD and workflow tools"]],
+["Impact of 5G on Web Technologies","5G offers very high speed, low latency and massive device connectivity.",["Faster streaming, AR/VR, cloud gaming","Enables real-time apps and IoT","Pairs with edge computing"]]]}];
+let cu=-1,ct=-1,open=new Set();
+const $=s=>document.querySelector(s),E=s=>String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+function nav(){$("#nav").innerHTML=U.map((u,i)=>`<button class="u" onclick="tu(${i})">${u.n}: ${u.t}<span>${open.has(i)?"−":"+"}</span></button>`+(open.has(i)?u.c.map((c,j)=>`<button class="t ${i==cu&&j==ct?"on":""}" onclick="go(${i},${j})">${E(c[0])}</button>`).join(""):"")).join("")}
+function tu(i){open.has(i)?open.delete(i):open.add(i);nav()}
+function go(i,j){cu=i;ct=j;if(i>=0)open.add(i);nav();$("#nav").classList.remove("open");const m=$("#main");
+if(i<0){m.innerHTML=`<div class="hero"><h2>Hello, ${E(me.n)}! 👋</h2><p>Welcome to Web Technology (CS35302)${me.c?" · "+E(me.c):""}. Pick a unit to start studying.</p></div><div class="grid">`+U.map((u,k)=>`<button class="card" style="--c:${CL[k]}" onclick="go(${k},-2)"><span class="emo">${EM[k]}</span><b style="color:${CL[k]}">${u.n}</b>${u.t}<br><small>${u.c.length} topics · ${u.h} hrs</small></button>`).join("")+`</div>`}
+else if(j<0){const u=U[i];m.innerHTML=`<div class="crumb">Web Technology › ${u.n}</div><h2>${u.t}</h2><div class="grid">`+u.c.map((c,k)=>`<button class="card" onclick="go(${i},${k})"><b>${k+1}. ${E(c[0])}</b></button>`).join("")+`</div>`}
+else{const u=U[i],c=u.c[j];m.innerHTML=`<div class="crumb">Web Technology › ${u.n} › Topic ${j+1}</div><div class="box"><h2>${E(c[0])}</h2><p>${E(c[1])}</p><b>Key points</b><ul>${c[2].map(p=>`<li>${E(p)}</li>`).join("")}</ul></div><div class="pn"><button ${j?"":"disabled"} onclick="go(${i},${j-1})">← Previous</button><button ${j<u.c.length-1?"":"disabled"} onclick="go(${i},${j+1})">Next →</button></div>`}
+scrollTo(0,0)}
+function tg(){const d=document.documentElement,dk=matchMedia("(prefers-color-scheme:dark)").matches;const cur=d.dataset.theme||(dk?"dark":"light");d.dataset.theme=cur=="dark"?"light":"dark"}
+const CL=["#2f5bd8","#e4602f","#12a37f","#a23fe4","#e4408e"],EM=["🌐","🧱","🔌","🤝","🚀"];let me={n:"",c:""};
+function ld(){try{return JSON.parse(localStorage.getItem("wt_user"))}catch(e){return null}}
+function st(){$("#w1").hidden=true;$("#w2").hidden=false;$("#fn").focus()}
+function er(m){$("#err").textContent=m}
+function enter(){const n=$("#fn").value.trim(),e=$("#fe").value.trim(),c=$("#fc").value.trim();
+if(n.length<2)return er("Please enter your name");if(!/^\S+@\S+\.\S+$/.test(e))return er("Please enter a valid email ID");if(c.length<2)return er("Please enter your college name");
+const u={n,e,c};try{localStorage.setItem("wt_user",JSON.stringify(u))}catch(x){}start(u)}
+function start(u){me=u;$("#gate").hidden=true;$("#who").textContent=u.n.split(" ")[0];go(-1,-1)}
+function out(){try{localStorage.removeItem("wt_user")}catch(e){}$("#gate").hidden=false;$("#w1").hidden=false;$("#w2").hidden=true;$("#err").textContent=""}
+const u0=ld();if(u0&&u0.n)start(u0);
+</script></body></html>
